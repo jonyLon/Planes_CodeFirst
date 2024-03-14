@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Policy;
 using System.Xml.Linq;
 
 namespace Planes_CodeFirst
@@ -39,6 +40,11 @@ namespace Planes_CodeFirst
         public string Country { get; set; }
 
         public virtual ICollection<Flight> Flights { get; set; }
+
+        public override string ToString()
+        {
+            return $"Model: {Model,-10} Type: {Type,-10} Capacity: {Capacity,-5} Country: {Country,-10}";
+        }
     }
     public class Flight
     {
@@ -62,6 +68,11 @@ namespace Planes_CodeFirst
 
         public virtual Airplane Airplane { get; set; }
         public virtual ICollection<Client> Clients { get; set; }
+
+        public override string ToString()
+        {
+            return $"Number: {Number,-10} TakeOffDate: {TakeOffDate,-20} LandedDate: {LandedDate,-20} Source: {Source,-15} Destination: {Destination,-15}";
+        }
     }
 
     public class Client { 
@@ -80,6 +91,11 @@ namespace Planes_CodeFirst
         public virtual Flight Flight { get; set; }
 
         public virtual Account Account { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name: {Name,-10} Surname: {Surname,-15} Email: {Email,-20} Gender: {Gender,-5}";
+        }
     }
     public class Account
     {
@@ -88,5 +104,7 @@ namespace Planes_CodeFirst
         public string Login { get; set; }
         [Required]
         public string Password { get; set; }
+
+        public override string ToString() => $"Login: {Login,-15} Password: {Password,-15}";
     }
 }
