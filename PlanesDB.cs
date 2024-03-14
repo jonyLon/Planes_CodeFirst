@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Planes_CodeFirst
 {
@@ -46,10 +48,8 @@ namespace Planes_CodeFirst
         }
         public int Id { get; set; }
         [Required]
-        public int Numder { get; set; }
+        public int Number { get; set; }
         public int AirplaneId { get; set; }
-
-        public int ClientId { get; set; }
 
         public DateTime? TakeOffDate { get; set; }
         public DateTime? LandedDate { get; set; }
@@ -76,9 +76,7 @@ namespace Planes_CodeFirst
         public string Email { get; set; }
         [MaxLength(10)]
         public string Gender { get; set; }
-        [Required]
         public int AccountId { get; set; }
-
         public virtual Flight Flight { get; set; }
 
         public virtual Account Account { get; set; }
@@ -90,7 +88,5 @@ namespace Planes_CodeFirst
         public string Login { get; set; }
         [Required]
         public string Password { get; set; }
-
-        public virtual Client Client { get; set; }
     }
 }
